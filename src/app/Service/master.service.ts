@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { ApiResponseModel } from '../Model/task';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +12,7 @@ export class MasterService {
 
   constructor(private http : HttpClient) { }
 
-  getAllTaskList() {
-    return this.http.get(this.apiUrl + 'GetAllTaskList');
+  getAllTaskList(): Observable<ApiResponseModel> {
+    return this.http.get<ApiResponseModel>(this.apiUrl + 'GetAllTaskList');
   }
 }
